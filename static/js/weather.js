@@ -45,6 +45,8 @@ const searchCity = () => {
             }
             output += ` м/с</p>`;
             weather_div.innerHTML = output;
+            // graph
+            Plotly.plot('plotly_graph',JSON.parse(data.graph_json),{});
         }
     );
 }

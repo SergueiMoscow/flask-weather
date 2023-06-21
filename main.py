@@ -1,6 +1,8 @@
 import os
 from datetime import datetime
 import json
+
+import plotly
 from flask import Flask, render_template, request
 from weather import Weather
 
@@ -30,7 +32,16 @@ def city():
     str_json = json.dumps(forecast, sort_keys=True, indent=4)
     with open('forecast.json', 'w') as f:
         f.write(str_json)
-    return {'location': locations[0], 'weather': location_weather, 'forecast': forecast}
+    # for show forecast:
+    fig = Weather.get_forecast_fig(forecast)
+    graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return {'location': locations[0], 'weather': location_weather, 'forecast': forecast, 'graph_json': graph_json}
+
+
+@app.route('/forecast')
+def get_forecast():
+    pass
 
 
 if __name__ == "__main__":
