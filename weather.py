@@ -13,29 +13,6 @@ class Weather:
         return render_template("weather.html")
 
     @staticmethod
-    def search_city(q: str):
-        # https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/%7BcountryCode%7D/search
-        url = 'http://dataservice.accuweather.com/locations/v1/cities/RU/search'
-        params = {
-            'apikey': private.ACCUWEATHER_API_KEY,
-            'q': q,
-            'language': 'ru-ru',
-            'details': 'false',
-            'offset': '10',
-        }
-        response = requests.get(url, params=params).json()
-        result = {'cities': [], 'weather': {}}
-        if len(response) > 0:
-            for city in response:
-                key = city['Key']
-                name = city['LocalizedName']
-                area = city['AdministrativeArea']['LocalizedName']
-                result['cities'].append({'name': name, 'region': area, 'key': key})
-            # url = ''
-            # result = ''
-        return json.dumps(result)
-
-    @staticmethod
     def search_location(query) -> list:
         url = 'https://cleaner.dadata.ru/api/v1/clean/address'
         headers = {
