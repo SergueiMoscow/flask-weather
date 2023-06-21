@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 db.cnf
 temp/
+private.py
