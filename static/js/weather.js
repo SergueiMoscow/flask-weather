@@ -32,7 +32,7 @@ const searchCity = () => {
             loc = data.location;
             output += `<h3>Координаты</h3><p>Широта: ${loc['lat']}, Долгота: ${loc['lon']}</p><p>${loc['location']}</p>`;
             weather = data.weather;
-            output += `<p>Погода в: ${weather.name}</p>
+            output += `<h3>Погода в: ${weather.name}</h3>
             <p>Температура: ${weather.main.temp}, ощущается как ${weather.main.feels_like}</p>`;
             output += `<p>Описание: `;
             weather.weather.forEach(el => {

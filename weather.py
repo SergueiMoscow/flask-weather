@@ -28,6 +28,7 @@ class Weather:
         response_json = response.json()
 
         result = []
+        print(f'Search_location: {response_json}')
         for found in response_json:
             result.append({'location': found['result'], 'lat': found['geo_lat'], 'lon': found['geo_lon']})
         return result
